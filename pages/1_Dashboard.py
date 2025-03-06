@@ -86,3 +86,5 @@ if not st.session_state.tickets.empty:
                         st.rerun()
 else:
     st.info("No tickets found. Create a new ticket above!")
+
+    
