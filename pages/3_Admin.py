@@ -6,7 +6,7 @@ if "logged_in" not in st.session_state or not st.session_state.logged_in:
     st.warning("Please log in to access this page.")
     st.stop()  # Stop execution if not logged in
 
-st.title("Admin Page")
+st.title("Admin Management")
 
 # Check if the user is an admin
 if st.session_state.user == "admin":
