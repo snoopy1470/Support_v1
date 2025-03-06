@@ -6,7 +6,7 @@ if "logged_in" not in st.session_state or not st.session_state.logged_in:
     st.warning("Please log in to access this page.")
     st.stop()  # Stop execution if not logged in
 
-st.title("Dashboard gang")
+st.title("Dashboard")
 
 
 # Initialize session state for tickets
