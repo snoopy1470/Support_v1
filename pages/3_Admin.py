@@ -1,6 +1,11 @@
 import streamlit as st
 from utils.auth import USERS
 
+# Check if user is logged in
+if "logged_in" not in st.session_state or not st.session_state.logged_in:
+    st.warning("Please log in to access this page.")
+    st.stop()  # Stop execution if not logged in
+
 st.title("Admin Page")
 
 # Check if the user is an admin

@@ -2,7 +2,13 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
+# Check if user is logged in
+if "logged_in" not in st.session_state or not st.session_state.logged_in:
+    st.warning("Please log in to access this page.")
+    st.stop()  # Stop execution if not logged in
+
 st.title("Statistics")
+
 
 # Check if tickets exist
 if "tickets" not in st.session_state or st.session_state.tickets.empty:
