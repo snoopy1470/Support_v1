@@ -14,11 +14,21 @@ if st.session_state.user == "admin":
 
     # Display current users
     st.write("#### Current Users")
+    users_to_delete = []  # Store usernames to delete
     for username, password in USERS.items():
-        st.write(f"- **{username}**")
-        if st.button(f"Delete {username}", key=f"delete_{username}"):
-            del USERS[username]
-            st.success(f"User {username} deleted!")
+        col1, col2 = st.columns([4, 1])
+        with col1:
+            st.write(f"- **{username}**")
+        with col2:
+            if username != "admin":  # Prevent deleting the admin user
+                if st.button(f"Delete {username}", key=f"delete_{username}"):
+                    users_to_delete.append(username)
+
+    # Delete users after iteration
+    for username in users_to_delete:
+        del USERS[username]
+        st.success(f"User {username} deleted!")
+        st.rerun()
 
     # Add new user
     st.write("#### Add New User")
@@ -30,5 +40,6 @@ if st.session_state.user == "admin":
         else:
             USERS[new_user] = new_password
             st.success(f"User {new_user} added successfully!")
+            st.rerun()
 else:
     st.error("You do not have admin access.")
